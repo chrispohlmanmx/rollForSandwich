@@ -4,7 +4,7 @@ A webapp based on a popular TikTok series
 
 ## TODO
 
--   [ ] Make site look better on mobile
+-   [x] Make site look better on mobile
 -   [ ] Add link to GitHub Repo
 
 ### Image sources
