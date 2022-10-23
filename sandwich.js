@@ -140,9 +140,29 @@ function roll() {
     const veggiesSelection = veggies[getRandomInt(veggies.length)];
     const condimentsSelection = condiments[getRandomInt(condiments.length)];
 
-    console.log(
-        `Bread: ${breadsSelection}, Meat: ${meatsSelection}, Cheese: ${cheesesSelection}, Veggie: ${veggiesSelection}, Condiments: ${condimentsSelection}`
-    );
+    const breadSpan = document.createElement("span");
+    breadSpan.innerText = breadsSelection;
+    breadDiv.appendChild(breadSpan);
+
+    const meatSpan = document.createElement("span");
+    meatSpan.innerText = meatsSelection;
+    meatDiv.appendChild(meatSpan);
+
+    const cheeseSpan = document.createElement("span");
+    cheeseSpan.innerText = cheesesSelection;
+    cheeseDiv.appendChild(cheeseSpan);
+
+    const veggieSpan = document.createElement("span");
+    veggieSpan.innerText = veggiesSelection;
+    veggieDiv.appendChild(veggieSpan);
+
+    const condimentSpan = document.createElement("span");
+    condimentSpan.innerText = condimentsSelection;
+    condimentDiv.appendChild(condimentSpan);
+
+    // console.log(
+    //     `Bread: ${breadsSelection}, Meat: ${meatsSelection}, Cheese: ${cheesesSelection}, Veggie: ${veggiesSelection}, Condiments: ${condimentsSelection}`
+    // );
 }
 
 function getRandomInt(max) {
