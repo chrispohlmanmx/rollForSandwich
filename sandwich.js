@@ -128,11 +128,11 @@ function firstRoll() {
 }
 
 function roll() {
-    const breadDiv = document.querySelector("#bread");
-    const meatDiv = document.querySelector("#meat");
-    const cheeseDiv = document.querySelector("#cheese");
-    const veggieDiv = document.querySelector("#veggies");
-    const condimentDiv = document.querySelector("#condiments");
+    const breadDiv = document.querySelector("#bread div.card-body");
+    const meatDiv = document.querySelector("#meat div.card-body");
+    const cheeseDiv = document.querySelector("#cheese div.card-body");
+    const veggieDiv = document.querySelector("#veggies div.card-body");
+    const condimentDiv = document.querySelector("#condiments div.card-body");
 
     const breadsSelection = breads[getRandomInt(breads.length)];
     const meatsSelection = meats[getRandomInt(meats.length)];
@@ -140,24 +140,59 @@ function roll() {
     const veggiesSelection = veggies[getRandomInt(veggies.length)];
     const condimentsSelection = condiments[getRandomInt(condiments.length)];
 
+    removeChildren(breadDiv);
+    removeChildren(meatDiv);
+    removeChildren(cheeseDiv);
+    removeChildren(veggieDiv);
+    removeChildren(condimentDiv);
+
     const breadSpan = document.createElement("span");
-    breadSpan.classList.add("card-text");
+    breadSpan.classList.add(
+        "card-text",
+        "font-weight-bold",
+        "text-center",
+        "text-capitalize"
+    );
     breadSpan.innerText = breadsSelection;
     breadDiv.appendChild(breadSpan);
 
     const meatSpan = document.createElement("span");
+    meatSpan.classList.add(
+        "card-text",
+        "font-weight-bold",
+        "text-center",
+        "text-capitalize"
+    );
     meatSpan.innerText = meatsSelection;
     meatDiv.appendChild(meatSpan);
 
     const cheeseSpan = document.createElement("span");
+    cheeseSpan.classList.add(
+        "card-text",
+        "font-weight-bold",
+        "text-center",
+        "text-capitalize"
+    );
     cheeseSpan.innerText = cheesesSelection;
     cheeseDiv.appendChild(cheeseSpan);
 
     const veggieSpan = document.createElement("span");
+    veggieSpan.classList.add(
+        "card-text",
+        "font-weight-bold",
+        "text-center",
+        "text-capitalize"
+    );
     veggieSpan.innerText = veggiesSelection;
     veggieDiv.appendChild(veggieSpan);
 
     const condimentSpan = document.createElement("span");
+    condimentSpan.classList.add(
+        "card-text",
+        "font-weight-bold",
+        "text-center",
+        "text-capitalize"
+    );
     condimentSpan.innerText = condimentsSelection;
     condimentDiv.appendChild(condimentSpan);
 
@@ -168,4 +203,10 @@ function roll() {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+}
+
+function removeChildren(domNode) {
+    while (domNode.firstChild) {
+        domNode.removeChild(domNode.firstChild);
+    }
 }
