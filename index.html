@@ -15,32 +15,61 @@
     </head>
     <body>
         <header>
-            <h1>Roll for Sandwich</h1>
+            <h1 class="flex">Roll for Sandwich</h1>
         </header>
 
         <main>
             <section id="landing" class="show">
-                <button type="submit" value="roll" id="first-roll">Roll</button>
+                <div class="center-screen">
+                    <button
+                        type="submit"
+                        value="roll"
+                        id="first-roll"
+                        class="btn btn-primary center-screen"
+                    >
+                        Roll
+                    </button>
+                </div>
             </section>
-            <section id="sandwich" class="hide">
-                <div id="bread">
-                    <img src="./images/bread.svg" alt="bread icon" />
+            <section id="sandwich" class="hide container-fluid">
+                <div class="row">
+                    <div id="bread" class="card col">
+                        <img
+                            src="./images/bread.svg"
+                            alt="bread icon"
+                            class="card-img-top"
+                        />
+                    </div>
+                    <div id="meat" class="card col">
+                        <img
+                            src="./images/meat.svg"
+                            alt="Mortadella Icon"
+                            class="card-img-top"
+                        />
+                    </div>
+                    <div id="cheese" class="card col">
+                        <img src="./images/cheese.svg" alt="Cheese Icon" />
+                    </div>
+                    <div id="veggies" class="card col">
+                        <img src="/images/veggies.svg" alt="Veggies Icon" />
+                    </div>
+                    <div id="condiments" class="card col">
+                        <img
+                            src="./images/condiments.svg"
+                            alt="Condiments Icon"
+                        />
+                    </div>
                 </div>
-                <div id="meat">
-                    <img src="./images/meat.svg" alt="Mortadella Icon" />
+                <div class="row">
+                    <button
+                        type="submit"
+                        value="roll-again"
+                        id="roll-again"
+                        class="btn btn-primary col text-center"
+                    >
+                        Roll Again?
+                    </button>
                 </div>
-                <div id="cheese">
-                    <img src="./images/cheese.svg" alt="Cheese Icon" />
-                </div>
-                <div id="veggies">
-                    <img src="/images/veggies.svg" alt="Veggies Icon" />
-                </div>
-                <div id="condiments">
-                    <img src="./images/condiments.svg" alt="Condiments Icon" />
-                </div>
-                <button type="submit" value="roll-again" id="roll-again">
-                    Roll Again?
-                </button>
             </section>
         </main>
         <script

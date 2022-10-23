@@ -5,3 +5,16 @@
 .show {
     display: initial;
 }
+
+/* https://stackoverflow.com/questions/31217268/center-div-on-the-middle-of-screen */
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+h1 {
+    text-align: center;
+}

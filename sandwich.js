@@ -141,6 +141,7 @@ function roll() {
     const condimentsSelection = condiments[getRandomInt(condiments.length)];
 
     const breadSpan = document.createElement("span");
+    breadSpan.classList.add("card-text");
     breadSpan.innerText = breadsSelection;
     breadDiv.appendChild(breadSpan);
 
