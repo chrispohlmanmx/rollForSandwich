@@ -112,3 +112,39 @@ const condiments = [
     "Relish",
     "Chutney",
 ];
+
+const firstRollButton = document.querySelector("#first-roll");
+const rollAgainButton = document.querySelector("#roll-again");
+
+firstRollButton.addEventListener("click", firstRoll);
+rollAgainButton.addEventListener("click", roll);
+
+function firstRoll() {
+    const landingSection = document.querySelector("#landing");
+    const sandwichSection = document.querySelector("#sandwich");
+    landingSection.classList.replace("show", "hide");
+    sandwichSection.classList.replace("hide", "show");
+    roll();
+}
+
+function roll() {
+    const breadDiv = document.querySelector("#bread");
+    const meatDiv = document.querySelector("#meat");
+    const cheeseDiv = document.querySelector("#cheese");
+    const veggieDiv = document.querySelector("#veggies");
+    const condimentDiv = document.querySelector("#condiments");
+
+    const breadsSelection = breads[getRandomInt(breads.length)];
+    const meatsSelection = meats[getRandomInt(meats.length)];
+    const cheesesSelection = cheeses[getRandomInt(cheeses.length)];
+    const veggiesSelection = veggies[getRandomInt(veggies.length)];
+    const condimentsSelection = condiments[getRandomInt(condiments.length)];
+
+    console.log(
+        `Bread: ${breadsSelection}, Meat: ${meatsSelection}, Cheese: ${cheesesSelection}, Veggie: ${veggiesSelection}, Condiments: ${condimentsSelection}`
+    );
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}

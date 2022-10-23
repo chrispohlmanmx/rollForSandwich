@@ -19,15 +19,30 @@
         </header>
 
         <main>
-            <button type="submit" value="roll" id="firstRoll">Roll</button>
+            <section id="landing" class="show">
+                <button type="submit" value="roll" id="first-roll">Roll</button>
+            </section>
+            <section id="sandwich" class="hide">
+                <div id="bread">
+                    <img src="./images/bread.svg" alt="bread icon" />
+                </div>
+                <div id="meat">
+                    <img src="./images/meat.svg" alt="Mortadella Icon" />
+                </div>
+                <div id="cheese">
+                    <img src="./images/cheese.svg" alt="Cheese Icon" />
+                </div>
+                <div id="veggies">
+                    <img src="/images/veggies.svg" alt="Veggies Icon" />
+                </div>
+                <div id="condiments">
+                    <img src="./images/condiments.svg" alt="Condiments Icon" />
+                </div>
+                <button type="submit" value="roll-again" id="roll-again">
+                    Roll Again?
+                </button>
+            </section>
         </main>
-        <section id="sandwich" class="hide">
-            <div id="bread"><p>Hi</p></div>
-            <div id="meat"></div>
-            <div id="cheese"></div>
-            <div id="veggies"></div>
-            <div id="condiments"></div>
-        </section>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -43,5 +58,6 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
+        <script src="sandwich.js"></script>
     </body>
 </html>
