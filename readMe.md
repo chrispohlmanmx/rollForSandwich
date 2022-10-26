@@ -2,6 +2,10 @@
 
 A webapp based on a popular TikTok series
 
+## Changelog
+
+-   Added ability for users to input their own ingredient lists to roll with
+
 ## TODO
 
 -   [x] Make site look better on mobile
