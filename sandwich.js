@@ -1,4 +1,4 @@
-const breads = [
+var breads = [
     "White Bread",
     "Sourdough",
     "Wheat Bread",
@@ -13,7 +13,7 @@ const breads = [
     "Rye",
     "Multigrain",
 ];
-const meats = [
+var meats = [
     "Chicken",
     "Turkey",
     "Ham",
@@ -30,7 +30,7 @@ const meats = [
     "Bologna",
     "Braunschweiger",
 ];
-const cheeses = [
+var cheeses = [
     "Cheddar",
     "American",
     "White American",
@@ -48,7 +48,7 @@ const cheeses = [
     "Bleu",
     "Swiss",
 ];
-const veggies = [
+var veggies = [
     "Lettuce",
     "Onion",
     "Bell Pepper",
@@ -73,7 +73,7 @@ const veggies = [
     "Brussel Sprouts",
     "Beets",
 ];
-const condiments = [
+var condiments = [
     "BBQ",
     "Steak Sauce",
     "Yellow Mustard",
@@ -115,9 +115,12 @@ const condiments = [
     "Chutney",
 ];
 
+var useUserFoods = false;
+
 const firstRollButton = document.querySelector("#first-roll");
 const rollAgainButton = document.querySelector("#roll-again");
 const getUserFoodsButton = document.querySelector("#get-user-foods");
+const submitUserFoodsButton = document.querySelector("#submit-user-foods");
 const landingSection = document.querySelector("#landing");
 const sandwichSection = document.querySelector("#sandwich");
 const userFoodsSection = document.querySelector("#user-foods");
@@ -125,25 +128,33 @@ const userFoodsSection = document.querySelector("#user-foods");
 firstRollButton.addEventListener("click", firstRoll);
 rollAgainButton.addEventListener("click", roll);
 getUserFoodsButton.addEventListener("click", showUserFoodsForm);
+submitUserFoodsButton.addEventListener("click", getUserFoods);
 
 function firstRoll() {
     landingSection.classList.add("hidden");
     sandwichSection.classList.remove("hidden");
-    roll();
+    roll(useUserFoods);
 }
 
-function roll() {
-    const breadDiv = document.querySelector("#bread div.card-body");
-    const meatDiv = document.querySelector("#meat div.card-body");
-    const cheeseDiv = document.querySelector("#cheese div.card-body");
-    const veggieDiv = document.querySelector("#veggies div.card-body");
-    const condimentDiv = document.querySelector("#condiments div.card-body");
-
+function roll(useUserFoods) {
+    if (useUserFoods) {
+        breads = localStorage.getItem("breads").split(",");
+        meats = localStorage.getItem("meats").split(",");
+        cheeses = localStorage.getItem("cheeses").split(",");
+        veggies = localStorage.getItem("veggies").split(",");
+        condiments = localStorage.getItem("condiments").split(",");
+    }
     const breadsSelection = breads[getRandomInt(breads.length)];
     const meatsSelection = meats[getRandomInt(meats.length)];
     const cheesesSelection = cheeses[getRandomInt(cheeses.length)];
     const veggiesSelection = veggies[getRandomInt(veggies.length)];
     const condimentsSelection = condiments[getRandomInt(condiments.length)];
+
+    const breadDiv = document.querySelector("#bread div.card-body");
+    const meatDiv = document.querySelector("#meat div.card-body");
+    const cheeseDiv = document.querySelector("#cheese div.card-body");
+    const veggieDiv = document.querySelector("#veggies div.card-body");
+    const condimentDiv = document.querySelector("#condiments div.card-body");
 
     removeChildren(breadDiv);
     removeChildren(meatDiv);
@@ -223,5 +234,25 @@ function showUserFoodsForm() {
 
 function getUserFoods() {
     const breadsTextArea = document.querySelector("#breads");
-    console.log(breadsTextArea.value);
+    const meatsTextArea = document.querySelector("#meats");
+    const cheesesTextArea = document.querySelector("#cheeses");
+    const veggiesTextArea = document.querySelector("#veggies");
+    const condimentsTextArea = document.querySelector("#condiments");
+
+    const breadsList = breadsTextArea.value.split(",");
+    const meatsList = meatsTextArea.value.split(",");
+    const cheesesList = cheesesTextArea.value.split(",");
+    const veggiesList = veggiesTextArea.value.split(",");
+    const condimentsList = condimentsTextArea.value.split(",");
+
+    localStorage.setItem("breads", breadsList);
+    localStorage.setItem("meats", meatsList);
+    localStorage.setItem("cheeses", cheesesList);
+    localStorage.setItem("veggies", veggiesList);
+    localStorage.setItem("condiments", condimentsList);
+
+    useUserFoods = true;
+
+    userFoodsSection.classList.add("hidden");
+    firstRollButton.click();
 }
