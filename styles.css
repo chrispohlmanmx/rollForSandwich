@@ -20,9 +20,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-.github-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
