@@ -1,4 +1,4 @@
-var breads = [
+const breads = [
     "White Bread",
     "Sourdough",
     "Wheat Bread",
@@ -13,7 +13,7 @@ var breads = [
     "Rye",
     "Multigrain",
 ];
-var meats = [
+const meats = [
     "Chicken",
     "Turkey",
     "Ham",
@@ -30,7 +30,7 @@ var meats = [
     "Bologna",
     "Braunschweiger",
 ];
-var cheeses = [
+const cheeses = [
     "Cheddar",
     "American",
     "White American",
@@ -48,7 +48,7 @@ var cheeses = [
     "Bleu",
     "Swiss",
 ];
-var veggies = [
+const veggies = [
     "Lettuce",
     "Onion",
     "Bell Pepper",
@@ -73,7 +73,7 @@ var veggies = [
     "Brussel Sprouts",
     "Beets",
 ];
-var condiments = [
+const condiments = [
     "BBQ",
     "Steak Sauce",
     "Yellow Mustard",
@@ -115,8 +115,6 @@ var condiments = [
     "Chutney",
 ];
 
-var useUserFoods = false;
-
 const firstRollButton = document.querySelector("#first-roll");
 const rollAgainButton = document.querySelector("#roll-again");
 const getUserFoodsButton = document.querySelector("#get-user-foods");
@@ -133,23 +131,42 @@ submitUserFoodsButton.addEventListener("click", getUserFoods);
 function firstRoll() {
     landingSection.classList.add("hidden");
     sandwichSection.classList.remove("hidden");
-    roll(useUserFoods);
+    console.log("I was called");
+    localStorage.setItem("useUserFoods", "False");
+    roll();
 }
 
-function roll(useUserFoods) {
-    if (useUserFoods) {
-        breads = localStorage.getItem("breads").split(",");
-        meats = localStorage.getItem("meats").split(",");
-        cheeses = localStorage.getItem("cheeses").split(",");
-        veggies = localStorage.getItem("veggies").split(",");
-        condiments = localStorage.getItem("condiments").split(",");
-    }
-    const breadsSelection = breads[getRandomInt(breads.length)];
-    const meatsSelection = meats[getRandomInt(meats.length)];
-    const cheesesSelection = cheeses[getRandomInt(cheeses.length)];
-    const veggiesSelection = veggies[getRandomInt(veggies.length)];
-    const condimentsSelection = condiments[getRandomInt(condiments.length)];
+function roll() {
+    var breadsSelection;
+    var meatsSelection;
+    var cheesesSelection;
+    var veggiesSelection;
+    var condimentsSelection;
 
+    var useUserFoods = localStorage.getItem("useUserFoods");
+
+    console.log(useUserFoods);
+
+    if (useUserFoods === "true") {
+        userBreads = localStorage.getItem("breads").split(",");
+        userMeats = localStorage.getItem("meats").split(",");
+        userCheeses = localStorage.getItem("cheeses").split(",");
+        userVeggies = localStorage.getItem("veggies").split(",");
+        userCondiments = localStorage.getItem("condiments").split(",");
+
+        breadsSelection = userBreads[getRandomInt(userBreads.length)];
+        meatsSelection = userMeats[getRandomInt(userMeats.length)];
+        cheesesSelection = userCheeses[getRandomInt(userCheeses.length)];
+        veggiesSelection = userVeggies[getRandomInt(userVeggies.length)];
+        condimentsSelection =
+            userCondiments[getRandomInt(userCondiments.length)];
+    } else {
+        breadsSelection = breads[getRandomInt(breads.length)];
+        meatsSelection = meats[getRandomInt(meats.length)];
+        cheesesSelection = cheeses[getRandomInt(cheeses.length)];
+        veggiesSelection = veggies[getRandomInt(veggies.length)];
+        condimentsSelection = condiments[getRandomInt(condiments.length)];
+    }
     const breadDiv = document.querySelector("#bread div.card-body");
     const meatDiv = document.querySelector("#meat div.card-body");
     const cheeseDiv = document.querySelector("#cheese div.card-body");
@@ -250,9 +267,10 @@ function getUserFoods() {
     localStorage.setItem("cheeses", cheesesList);
     localStorage.setItem("veggies", veggiesList);
     localStorage.setItem("condiments", condimentsList);
-
-    useUserFoods = true;
+    localStorage.setItem("useUserFoods", "true");
 
     userFoodsSection.classList.add("hidden");
-    firstRollButton.click();
+    landingSection.classList.add("hidden");
+    sandwichSection.classList.remove("hidden");
+    roll();
 }
