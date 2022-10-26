@@ -27,6 +27,8 @@ const meats = [
     "Steak",
     "Gyro",
     "Bacon",
+    "Bologna",
+    "Braunschweiger",
 ];
 const cheeses = [
     "Cheddar",
@@ -115,15 +117,18 @@ const condiments = [
 
 const firstRollButton = document.querySelector("#first-roll");
 const rollAgainButton = document.querySelector("#roll-again");
+const getUserFoodsButton = document.querySelector("#get-user-foods");
+const landingSection = document.querySelector("#landing");
+const sandwichSection = document.querySelector("#sandwich");
+const userFoodsSection = document.querySelector("#user-foods");
 
 firstRollButton.addEventListener("click", firstRoll);
 rollAgainButton.addEventListener("click", roll);
+getUserFoodsButton.addEventListener("click", showUserFoodsForm);
 
 function firstRoll() {
-    const landingSection = document.querySelector("#landing");
-    const sandwichSection = document.querySelector("#sandwich");
-    landingSection.classList.replace("show", "hide");
-    sandwichSection.classList.replace("hide", "show");
+    landingSection.classList.add("hidden");
+    sandwichSection.classList.remove("hidden");
     roll();
 }
 
@@ -209,4 +214,14 @@ function removeChildren(domNode) {
     while (domNode.firstChild) {
         domNode.removeChild(domNode.firstChild);
     }
+}
+
+function showUserFoodsForm() {
+    landingSection.classList.add("hidden");
+    userFoodsSection.classList.remove("hidden");
+}
+
+function getUserFoods() {
+    const breadsTextArea = document.querySelector("#breads");
+    console.log(breadsTextArea.value);
 }

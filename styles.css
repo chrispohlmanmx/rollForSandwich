@@ -1,9 +1,5 @@
-.hide {
+.hidden {
     display: none;
-}
-
-.show {
-    display: initial;
 }
 
 /* https://stackoverflow.com/questions/31217268/center-div-on-the-middle-of-screen */

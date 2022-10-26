@@ -25,13 +25,60 @@
                         type="submit"
                         value="roll"
                         id="first-roll"
-                        class="btn btn-primary center-screen"
+                        class="btn btn-primary center-screen mr-2"
                     >
                         Roll
                     </button>
+                    <button
+                        type="submit"
+                        value="user-foods"
+                        id="get-user-foods"
+                        class="btn btn-primary center-screen"
+                    >
+                        Use your own Ingredients
+                    </button>
                 </div>
             </section>
-            <section id="sandwich" class="hide container-fluid">
+            <section id="user-foods" class="hidden">
+                <form>
+                    <label for="breads">Breads</label>
+                    <textarea
+                        class="form-control"
+                        id="breads"
+                        rows="3"
+                    ></textarea>
+                    <label for="meats">Meats</label>
+                    <textarea
+                        class="form-control"
+                        id="meats"
+                        rows="3"
+                    ></textarea>
+                    <label for="cheeses">Cheeses</label>
+                    <textarea
+                        class="form-control"
+                        id="cheeses"
+                        rows="3"
+                    ></textarea>
+                    <label for="veggies">Veggies</label>
+                    <textarea
+                        class="form-control"
+                        id="veggies"
+                        rows="3"
+                    ></textarea>
+                    <label for="condiments">Condiments</label>
+                    <textarea
+                        class="form-control"
+                        id="condiments"
+                        rows="3"
+                    ></textarea>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">
+                            Submit and Roll
+                        </button>
+                    </div>
+                </form>
+            </section>
+            <section id="sandwich" class="hidden container-fluid">
                 <div class="row">
                     <div id="bread" class="card col-12 col-sm-6 col-lg">
                         <img
