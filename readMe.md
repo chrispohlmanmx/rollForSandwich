@@ -9,7 +9,7 @@ A webapp based on a popular TikTok series
 ## TODO
 
 -   [x] Make site look better on mobile
--   [ ] Add link to GitHub Repo
+-   [x] Add link to GitHub Repo
 
 ### Image sources
 
