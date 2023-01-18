@@ -119,6 +119,14 @@ const condimentsList = [
     "Chutney",
 ];
 
+const imageMap = {
+    0: "bread.svg",
+    1: "meat.svg",
+    2: "cheese.svg",
+    3: "veggies.svg",
+    4: "condiments.svg",
+};
+
 function App() {
     const [rolled, setRolled] = useState(false);
     const [sandwich, setSandwich] = useState([]);
@@ -157,11 +165,17 @@ function App() {
 
     if (rolled) {
         const sandwichIngredients = sandwich.map((ingredient) => (
-            <li key={sandwich.indexOf(ingredient)}>{ingredient}</li>
+            <li key={sandwich.indexOf(ingredient)} className="ingredientCard">
+                <img
+                    className="ingredientImg"
+                    src={`images/${imageMap[sandwich.indexOf(ingredient)]}`}
+                ></img>
+                {ingredient}
+            </li>
         ));
         return (
             <div>
-                <ul>{sandwichIngredients}</ul>
+                <ul className="ingredients">{sandwichIngredients}</ul>
                 <button onClick={roll}>Roll</button>
             </div>
         );
