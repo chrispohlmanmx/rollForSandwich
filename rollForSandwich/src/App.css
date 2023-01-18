@@ -45,12 +45,15 @@
     list-style-type: none;
 }
 
-.ingredientCard {
-    margin: 2em;
+.ingredientImg {
+    max-width: 200px;
+    padding: 2em;
 }
 
-.ingredientImg {
-    max-width: 10rem;
-    max-height: 8rem;
-    padding: 3em;
+@media screen and (max-width: 1200px) {
+    .ingredients {
+        display: flex;
+        list-style-type: none;
+        flex-wrap: wrap;
+    }
 }
