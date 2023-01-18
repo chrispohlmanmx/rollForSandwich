@@ -120,6 +120,8 @@ const condimentsList = [
 ];
 
 function App() {
+    const [rolled, setRolled] = useState(false);
+    const [sandwich, setSandwich] = useState([]);
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
@@ -137,11 +139,33 @@ function App() {
         condimentsSelection =
             condimentsList[getRandomInt(condimentsList.length)];
 
-        console.log(
-            `${breadsSelection} + ${meatsSelection} + ${cheesesSelection} + ${veggiesSelection} + ${condimentsSelection}`
-        );
+        // console.log(
+        //     `${breadsSelection} + ${meatsSelection} + ${cheesesSelection} + ${veggiesSelection} + ${condimentsSelection}`
+        // );
+
+        //render sandwich ingredients to the screen
+        const newSandwich = [
+            breadsSelection,
+            meatsSelection,
+            cheesesSelection,
+            veggiesSelection,
+            condimentsSelection,
+        ];
+        setRolled(true);
+        setSandwich(newSandwich);
     }
 
+    if (rolled) {
+        const sandwichIngredients = sandwich.map((ingredient) => (
+            <li key={sandwich.indexOf(ingredient)}>{ingredient}</li>
+        ));
+        return (
+            <div>
+                <ul>{sandwichIngredients}</ul>
+                <button onClick={roll}>Roll</button>
+            </div>
+        );
+    }
     return (
         <div className="App">
             <button onClick={roll}>Roll</button>
