@@ -168,16 +168,35 @@ function App() {
             </li>
         ));
         return (
-            <div>
-                <ul className="ingredients">{sandwichIngredients}</ul>
-                <button onClick={roll}>Roll</button>
-            </div>
+            <>
+                <Header />
+                <div>
+                    <ul className="ingredients">{sandwichIngredients}</ul>
+                    <button onClick={roll}>Roll Again?</button>
+                </div>
+            </>
         );
     }
     return (
-        <div className="App">
-            <button onClick={roll}>Roll</button>
-        </div>
+        <>
+            <Header />
+            <div className="App">
+                <button onClick={roll}>Roll</button>
+            </div>
+        </>
+    );
+}
+
+function Header() {
+    return (
+        <header>
+            <nav>
+                <a href="https://github.com/chrispohlmanmx/rollForSandwich">
+                    GitHub
+                </a>
+            </nav>
+            <h1>Roll for Sandwich</h1>
+        </header>
     );
 }
 
