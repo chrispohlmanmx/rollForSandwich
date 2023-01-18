@@ -134,17 +134,11 @@ function App() {
         return Math.floor(Math.random() * max);
     }
     function roll() {
-        var breadsSelection;
-        var meatsSelection;
-        var cheesesSelection;
-        var veggiesSelection;
-        var condimentsSelection;
-
-        breadsSelection = breadsList[getRandomInt(breadsList.length)];
-        meatsSelection = meatsList[getRandomInt(meatsList.length)];
-        cheesesSelection = cheesesList[getRandomInt(cheesesList.length)];
-        veggiesSelection = veggiesList[getRandomInt(veggiesList.length)];
-        condimentsSelection =
+        var breadsSelection = breadsList[getRandomInt(breadsList.length)];
+        var meatsSelection = meatsList[getRandomInt(meatsList.length)];
+        var cheesesSelection = cheesesList[getRandomInt(cheesesList.length)];
+        var veggiesSelection = veggiesList[getRandomInt(veggiesList.length)];
+        var condimentsSelection =
             condimentsList[getRandomInt(condimentsList.length)];
 
         // console.log(
