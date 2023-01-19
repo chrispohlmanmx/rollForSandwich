@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Header from "./Header";
 
 const breadsList = [
     "White Bread",
@@ -184,19 +185,6 @@ function App() {
                 <button onClick={roll}>Roll</button>
             </div>
         </>
-    );
-}
-
-function Header() {
-    return (
-        <header>
-            <nav>
-                <a href="https://github.com/chrispohlmanmx/rollForSandwich">
-                    GitHub
-                </a>
-            </nav>
-            <h1>Roll for Sandwich</h1>
-        </header>
     );
 }
 
