@@ -139,6 +139,7 @@ function App() {
 
     function handleHomeClick() {
         setRolled(false);
+        setUseCustomIngredients(false);
     }
 
     function roll() {
