@@ -136,6 +136,11 @@ function App() {
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
+
+    function handleHomeClick() {
+        setRolled(false);
+    }
+
     function roll() {
         if (!useCustomIngredients) {
             var breadsList = defaultBreadsList;
@@ -152,8 +157,6 @@ function App() {
             var condimentsList = JSON.parse(
                 sessionStorage.getItem("Condiments")
             );
-
-            console.log(breadsList);
         }
 
         var breadsSelection = breadsList[getRandomInt(breadsList.length)];
@@ -195,6 +198,7 @@ function App() {
                 <div>
                     <ul className="ingredients">{sandwichIngredients}</ul>
                     <button onClick={roll}>Roll Again?</button>
+                    <button onClick={handleHomeClick}>Home</button>
                 </div>
             </>
         );
