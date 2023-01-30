@@ -1,4 +1,10 @@
-export default function CustomIngredientsForm() {
+import { useCallback, useState } from "react";
+
+export default function CustomIngredientsForm({
+    ingredientType,
+    useCustomIngredients,
+}) {
+    const [isSaved, setIsSaved] = useState(false);
     const [sandwichIngredients, setSandwichIngredients] = useState([
         "",
         "",
@@ -6,45 +12,59 @@ export default function CustomIngredientsForm() {
     ]);
     const handleIngredientChange = useCallback((event) => {
         const index = parseInt(event.target.dataset.index, 10);
-        setSandwichIngredients((inviteEmails) => {
+        setSandwichIngredients((sandwichIngredients) => {
             const newSandwichIngredients = [...sandwichIngredients];
             newSandwichIngredients[index] = event.target.value;
             return newSandwichIngredients;
         });
     }, []);
-    const removeIngredient = useCallback((event) => {
-        const index = parseInt(event.target.dataset.index, 10);
-        setSandwichIngredients((sandwichIngredients) => {
-            const newSandwichIngredients = [...sandwichIngredients];
-            newSandwichIngredients.splice(index, 1);
-            return newSandwichIngredients;
-        });
-    }, []);
-    const addIngredient = useCallback(
-        () =>
-            setSandwichIngredients((sandwichIngredients) => [
-                ...sandwichIngredients,
-                "",
-            ]),
-        []
-    );
+    function addIngredient(event) {
+        event.preventDefault();
+        setSandwichIngredients((sandwichIngredients) => [
+            ...sandwichIngredients,
+            "",
+        ]);
+    }
+
+    function saveIngredients(event) {
+        event.preventDefault();
+        sessionStorage.setItem(
+            ingredientType,
+            JSON.stringify(sandwichIngredients.filter(Boolean), null, 2)
+        );
+        setIsSaved(true);
+    }
+
+    function handleEditClick(event) {
+        event.preventDefault();
+        setIsSaved(false);
+    }
+
+    if (isSaved) {
+        return (
+            <div>
+                <h3>{ingredientType}</h3>
+                <p>Saved!</p>
+                <button onClick={handleEditClick}>Edit</button>
+            </div>
+        );
+    }
 
     return (
-        <div>
-            {sandwichIngredients.map((email, index) => (
+        <form>
+            <h3>{ingredientType}</h3>
+            {sandwichIngredients.map((ingredient, index) => (
                 <div key={index}>
                     <input
-                        value={email}
+                        value={ingredient}
                         data-index={index}
                         onChange={handleIngredientChange}
                         placeholder="Enter ingredient here..."
                     />
-                    <button onClick={removeIngredient} data-index={index}>
-                        &times;
-                    </button>
                 </div>
             ))}
             <button onClick={addIngredient}>Add ingredient</button>
-        </div>
+            <button onClick={saveIngredients}>Save</button>
+        </form>
     );
 }

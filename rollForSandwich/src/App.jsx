@@ -4,7 +4,7 @@ import "./App.css";
 import Header from "./Header";
 import CustomIngredientsForm from "./CustomIngredientsForm";
 
-const breadsList = [
+const defaultBreadsList = [
     "White Bread",
     "Sourdough",
     "Wheat Bread",
@@ -19,7 +19,7 @@ const breadsList = [
     "Rye",
     "Multigrain",
 ];
-const meatsList = [
+const defaultMeatsList = [
     "Chicken",
     "Turkey",
     "Ham",
@@ -36,7 +36,7 @@ const meatsList = [
     "Bologna",
     "Braunschweiger",
 ];
-const cheesesList = [
+const defaultCheesesList = [
     "Cheddar",
     "American",
     "White American",
@@ -54,7 +54,7 @@ const cheesesList = [
     "Bleu",
     "Swiss",
 ];
-const veggiesList = [
+const defaultVeggiesList = [
     "Lettuce",
     "Onion",
     "Bell Pepper",
@@ -79,7 +79,7 @@ const veggiesList = [
     "Brussel Sprouts",
     "Beets",
 ];
-const condimentsList = [
+const defaultCondimentList = [
     "BBQ",
     "Steak Sauce",
     "Yellow Mustard",
@@ -137,16 +137,31 @@ function App() {
         return Math.floor(Math.random() * max);
     }
     function roll() {
+        if (!useCustomIngredients) {
+            var breadsList = defaultBreadsList;
+            var meatsList = defaultMeatsList;
+            var cheesesList = defaultCheesesList;
+            var veggiesList = defaultVeggiesList;
+            var condimentsList = defaultCondimentList;
+        } else {
+            //get ingredients from session storage instead of using hardcoded values
+            var breadsList = JSON.parse(sessionStorage.getItem("Breads"));
+            var meatsList = JSON.parse(sessionStorage.getItem("Meats"));
+            var cheesesList = JSON.parse(sessionStorage.getItem("Cheeses"));
+            var veggiesList = JSON.parse(sessionStorage.getItem("Veggies"));
+            var condimentsList = JSON.parse(
+                sessionStorage.getItem("Condiments")
+            );
+
+            console.log(breadsList);
+        }
+
         var breadsSelection = breadsList[getRandomInt(breadsList.length)];
         var meatsSelection = meatsList[getRandomInt(meatsList.length)];
         var cheesesSelection = cheesesList[getRandomInt(cheesesList.length)];
         var veggiesSelection = veggiesList[getRandomInt(veggiesList.length)];
         var condimentsSelection =
             condimentsList[getRandomInt(condimentsList.length)];
-
-        // console.log(
-        //     `${breadsSelection} + ${meatsSelection} + ${cheesesSelection} + ${veggiesSelection} + ${condimentsSelection}`
-        // );
 
         //render sandwich ingredients to the screen
         const newSandwich = [
@@ -166,7 +181,7 @@ function App() {
 
     if (rolled) {
         const sandwichIngredients = sandwich.map((ingredient) => (
-            <li key={sandwich.indexOf(ingredient)} className="ingredientCard">
+            <li key={ingredient} className="ingredientCard">
                 <img
                     className="ingredientImg"
                     src={`images/${imageMap[sandwich.indexOf(ingredient)]}`}
@@ -189,7 +204,16 @@ function App() {
         return (
             <>
                 <Header />
-                <CustomIngredientsForm />
+                <div className="grid-container">
+                    <CustomIngredientsForm ingredientType="Breads" />
+                    <CustomIngredientsForm ingredientType="Meats" />
+                    <CustomIngredientsForm ingredientType="Cheeses" />
+                    <CustomIngredientsForm ingredientType="Veggies" />
+                    <CustomIngredientsForm ingredientType="Condiments" />
+                    <button onClick={roll} className="span3-center">
+                        Roll
+                    </button>
+                </div>
             </>
         );
     }

@@ -50,6 +50,16 @@
     padding: 2em;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+.span3-center {
+    grid-column: 2 / span 3;
+}
+
 @media screen and (max-width: 1200px) {
     .ingredients {
         display: flex;
