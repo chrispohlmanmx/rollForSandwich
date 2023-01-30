@@ -131,6 +131,7 @@ const imageMap = {
 function App() {
     const [rolled, setRolled] = useState(false);
     const [sandwich, setSandwich] = useState([]);
+    const [useCustomIngredients, setUseCustomIngredients] = useState(false);
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
@@ -158,6 +159,10 @@ function App() {
         setSandwich(newSandwich);
     }
 
+    function handleCustomizeIngredientsClick() {
+        setUseCustomIngredients(true);
+    }
+
     if (rolled) {
         const sandwichIngredients = sandwich.map((ingredient) => (
             <li key={sandwich.indexOf(ingredient)} className="ingredientCard">
@@ -178,11 +183,19 @@ function App() {
             </>
         );
     }
+
+    if (useCustomIngredients) {
+        return <div>Custom Ingredients Form goes here</div>;
+    }
+
     return (
         <>
             <Header />
             <div className="App">
                 <button onClick={roll}>Roll</button>
+                <button onClick={handleCustomizeIngredientsClick}>
+                    Customize Ingredients
+                </button>
             </div>
         </>
     );
