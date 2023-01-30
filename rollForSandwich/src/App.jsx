@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Header from "./Header";
+import CustomIngredientsForm from "./CustomIngredientsForm";
 
 const breadsList = [
     "White Bread",
@@ -185,7 +186,12 @@ function App() {
     }
 
     if (useCustomIngredients) {
-        return <div>Custom Ingredients Form goes here</div>;
+        return (
+            <>
+                <Header />
+                <CustomIngredientsForm />
+            </>
+        );
     }
 
     return (
